@@ -1,8 +1,8 @@
 const mysql = require('mysql');
 // buat konfigurasi koneksi
 const dbconnection = mysql.createConnection({
-    host: 'wasics.database.windows.net',
-    user: '5025211006@mhs.its.ac.id',
+    host: 'wasics',
+    user: 'wardaas',
     //password: 'password_kalian',
     database: 'ncc-crud',
     multipleStatements: true
