@@ -1,17 +1,15 @@
-const sql = require('mssql');
-
-const config = {
-    user: 'wardaas',
-    password: 'RedAndGold150403',
-    server: 'wasics.database.windows.net',
+const mysql = require('mysql');
+// buat konfigurasi koneksi
+const dbconnection = mysql.createConnection({
+    host: '127.0.0.1',
+    user: 'root',
+    //password: 'password_kalian',
     database: 'ncc-crud',
-  };
-  
-  const dbconnection = new sql.ConnectionPool(config);
-
+    multipleStatements: true
+});
 // koneksi database
 dbconnection.connect((err) => {
     if (err) throw err;
-    console.log('MySQL Connected to wasics.database.windows.net in ncc-crud Database');
+    console.log('MySQL Connected to root@127.0.0.1 in ncc-crud Database');
 });
 module.exports = dbconnection;

@@ -14,7 +14,7 @@ app.get("/", (req, res) => {
     const querySql = 'SELECT * FROM rekapstokbarang';
 
     // jalankan query
-    dbconnection.request().query(querySql, (err, rows, field) => {
+    dbconnection.query(querySql, (err, rows, field) => {
         // error handling
         if (err) {
             return res.status(500).json({ message: 'There is an error', error: err });
@@ -33,12 +33,12 @@ app.get("/:id", (req, res) => {
     const querySql = 'SELECT * FROM rekapstokbarang WHERE ID_Barang = ?';
 
     // jalankan query
-    dbconnection.request().query(querySql, req.params.id, (err, rows, field) => {
+    dbconnection.query(querySql, req.params.id, (err, rows, field) => {
             // error handling
             if (err) {
                 return res.status(500).json({ message: 'There is an error', error: err });
             }
-    
+
             // jika request berhasil
             if(rows.length){
                 res.status(200).json({ data: rows });
@@ -71,7 +71,7 @@ app.post("/", (req, res) => {
     }
 
     // jalankan query
-    dbconnection.request().query(querySql, data, (err, rows, field) => {
+    dbconnection.query(querySql, data, (err, rows, field) => {
         // error handling
         if (err) {
             return res.status(500).json({ message: 'There is an error', error: err });
@@ -92,7 +92,7 @@ app.put("/:id", (req, res) => {
     const queryUpdate = 'UPDATE rekapstokbarang SET ? WHERE ID_Barang = ?';
 
     // jalankan query untuk melakukan pencarian data
-    dbconnection.request().query(querySearch, req.params.id, (err, rows, field) => {
+    dbconnection.query(querySearch, req.params.id, (err, rows, field) => {
         // error handling
         if (err) {
             return res.status(500).json({ message: 'There is an error', error: err });
@@ -115,7 +115,7 @@ app.put("/:id", (req, res) => {
             }
 
             // jalankan query update
-            dbconnection.request().query(queryUpdate, [data, req.params.id], (err, rows, field) => {
+            dbconnection.query(queryUpdate, [data, req.params.id], (err, rows, field) => {
                 // error handling
                 if (err) {
                     return res.status(500).json({ message: 'There is an error', error: err });
@@ -139,7 +139,7 @@ app.delete("/:id", (req, res) => {
     const queryDelete = 'DELETE FROM rekapstokbarang WHERE ID_Barang = ?';
 
     // jalankan query untuk melakukan pencarian data
-    dbconnection.request().query(querySearch, req.params.id, (err, rows, field) => {
+    dbconnection.query(querySearch, req.params.id, (err, rows, field) => {
         // error handling
         if (err) {
             return res.status(500).json({ message: 'There is an error', error: err });
