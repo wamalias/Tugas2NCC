@@ -14,7 +14,7 @@ app.get("/", (req, res) => {
     const querySql = 'SELECT * FROM rekapstokbarang';
 
     // jalankan query
-    dbconnection.query(querySql, (err, rows, field) => {
+    dbconnection.request().query(querySql, (err, rows, field) => {
         // error handling
         if (err) {
             return res.status(500).json({ message: 'There is an error', error: err });
