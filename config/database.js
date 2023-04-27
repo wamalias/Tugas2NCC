@@ -4,7 +4,7 @@ const dbconnection = mysql.createConnection({
     host: 'localhost',
     user: 'was',
     password: '123456789',
-    database: 'ncc-crud',
+    database: 'ncc_crud',
     multipleStatements: true
 });
 // koneksi database
